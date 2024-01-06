@@ -1,7 +1,8 @@
 import ffmpeg from 'fluent-ffmpeg';
-import glob from 'glob';
+import { glob } from 'glob';
 import path from 'path';
 import fs from 'fs';
+import config from './config.js'
 
 const inputFolder = config.inputFolder;
 const outputFolder = `${inputFolder}${config.outputFolderSuffix}`;
