@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
+    "glob": "^10.3.10"
+  }
+}

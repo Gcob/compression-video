@@ -1,0 +1,11 @@
+{
+    "inputFolder": "mesvideos",
+    "outputFolderSuffix": "-min",
+    "videoFormats": ["avi", "mp4", "mkv"],
+    "ffmpegSettings": {
+      "videoCodec": "libx264",
+      "size": "1280x720",
+      "outputOptions": ["-crf 28", "-preset veryfast"]
+    }
+  }
+  
