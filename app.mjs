@@ -32,16 +32,19 @@ function listFilesRecursively(dir, extensions, fileList = []) {
 // Fonction pour compresser une vidéo
 function compressVideo(videoPath) {
   return new Promise((resolve, reject) => {
+    const startTime = Date.now(); 
     const outputFilePath = path.join(outputFolder, path.basename(videoPath, path.extname(videoPath)) + '.min.mp4');
 
     ffmpeg(videoPath)
       .outputOptions([
-        '-vf', 'scale=-2:720', // redimensionne la vidéo à une hauteur de 720px tout en conservant le ratio d'aspect
-        '-crf 28', 
-        '-preset veryfast'
+        '-vf', 'scale=-2:720', 
+        '-crf 30', 
+        '-preset slower'
       ])
       .on('end', () => {
-        console.log(`Compression terminée : ${outputFilePath}`);
+        const endTime = Date.now(); // Enregistre le moment de fin
+        const compressionTime = (endTime - startTime) / 1000; // Calcule la durée en secondes
+        console.log(`Compression terminée : ${outputFilePath} en ${compressionTime} secondes.`);
         resolve();
       })
       .on('error', (err) => {
@@ -51,7 +54,6 @@ function compressVideo(videoPath) {
       .save(outputFilePath);
   });
 }
-
 
 
 
